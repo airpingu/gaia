@@ -110,7 +110,8 @@ var ScreenManager = {
     if (power) {
       power.addWakeLockListener(function scm_handleWakeLock(topic, state) {
         if (topic == 'screen') {
-          self._screenWakeLocked = (state == 'locked-foreground');
+          self._screenWakeLocked = (state == 'locked-foreground' ||
+                                     state == 'locked-background');
 
           if (self._screenWakeLocked)
             // Turn screen on if wake lock is acquire
